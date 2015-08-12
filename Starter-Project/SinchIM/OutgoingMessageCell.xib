@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8bb-Kj-npW" customClass="MessageTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8bb-Kj-npW" id="LbD-8q-mUN">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7C-Nr-DVA" userLabel="nameLabel">
+                        <rect key="frame" x="150" y="5" width="150" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="h3l-Ak-gMT"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kJ-cJ-aDy" userLabel="BubbleView">
+                        <rect key="frame" x="10" y="23" width="303" height="63"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Purple_bubble.png" translatesAutoresizingMaskIntoConstraints="NO" id="kyy-JO-pKM">
+                                <rect key="frame" x="0.0" y="0.0" width="303" height="63"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hello!" translatesAutoresizingMaskIntoConstraints="NO" id="dfh-9J-Gib" userLabel="messageText">
+                                <rect key="frame" x="0.0" y="0.0" width="288" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="dfh-9J-Gib" firstAttribute="leading" secondItem="5kJ-cJ-aDy" secondAttribute="leading" id="Vih-hl-vUs"/>
+                            <constraint firstItem="dfh-9J-Gib" firstAttribute="top" secondItem="5kJ-cJ-aDy" secondAttribute="top" id="WSp-5V-zVF"/>
+                            <constraint firstAttribute="bottom" secondItem="dfh-9J-Gib" secondAttribute="bottom" id="Xta-P9-9Gg"/>
+                            <constraint firstAttribute="trailing" secondItem="dfh-9J-Gib" secondAttribute="trailing" constant="15" id="YV4-mf-jaA"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.9490196704864502" green="0.94509810209274292" blue="0.9490196704864502" alpha="1" colorSpace="deviceRGB"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="5kJ-cJ-aDy" secondAttribute="trailing" constant="7" id="BEv-TH-nGG"/>
+                    <constraint firstItem="5kJ-cJ-aDy" firstAttribute="leading" secondItem="LbD-8q-mUN" secondAttribute="leading" constant="10" id="Loh-0y-iRg"/>
+                    <constraint firstAttribute="trailing" secondItem="g7C-Nr-DVA" secondAttribute="trailing" constant="20" id="TJg-Zv-Fbj"/>
+                    <constraint firstItem="g7C-Nr-DVA" firstAttribute="top" secondItem="LbD-8q-mUN" secondAttribute="top" constant="5" id="b7R-Rx-XUb"/>
+                    <constraint firstAttribute="bottom" secondItem="5kJ-cJ-aDy" secondAttribute="bottom" constant="3" id="fJC-q6-x60"/>
+                    <constraint firstItem="5kJ-cJ-aDy" firstAttribute="top" secondItem="g7C-Nr-DVA" secondAttribute="bottom" constant="1" id="mhE-dr-3b1"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="message" destination="dfh-9J-Gib" id="boS-wO-vdN"/>
+                <outlet property="nameLabel" destination="g7C-Nr-DVA" id="Qie-9x-zkD"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Purple_bubble.png" width="341" height="89"/>
+    </resources>
+</document>
