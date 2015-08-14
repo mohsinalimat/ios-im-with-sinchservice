@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3647543C-DE60-47CA-84A8-140B5E08B867</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SinchIM</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5705B6DEDFE10D8A29EB3F3FAF2B3EFF75F12696</key>
+		<string>https://github.com/sinch/ios-im-with-sinchservice.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Final-Project/SinchIM.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5705B6DEDFE10D8A29EB3F3FAF2B3EFF75F12696</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/sinch/ios-im-with-sinchservice.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5705B6DEDFE10D8A29EB3F3FAF2B3EFF75F12696</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5705B6DEDFE10D8A29EB3F3FAF2B3EFF75F12696</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ios-im-with-sinchservice</string>
+		</dict>
+	</array>
+</dict>
+</plist>

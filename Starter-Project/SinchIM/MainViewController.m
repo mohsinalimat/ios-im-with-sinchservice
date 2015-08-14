@@ -30,15 +30,11 @@ typedef NS_ENUM(int, MessageDirection) { Incoming, Outgoing, };
 #pragma mark - SINMessageClientDelegate
 
 - (void)messageClient:(id<SINMessageClient>)messageClient didReceiveIncomingMessage:(id<SINMessage>)message {
-  [_messages addObject:@[ message, @(Incoming) ]];
-  [self.messageView reloadData];
-  [self scrollToBottom];
+    //add code here :)
 }
 
 - (void)messageSent:(id<SINMessage>)message recipientId:(NSString *)recipientId {
-  [_messages addObject:@[ message, @(Outgoing) ]];
-  [self.messageView reloadData];
-  [self scrollToBottom];
+    //add code here :)
 }
 
 - (void)message:(id<SINMessage>)message shouldSendPushNotifications:(NSArray *)pushPairs {
@@ -72,8 +68,6 @@ typedef NS_ENUM(int, MessageDirection) { Incoming, Outgoing, };
   id<SINMessage> message = entry[0];
   MessageTableViewCell *cell = [self dequeOrLoadMessageTableViewCell:[entry[1] intValue]];
 
-  cell.message.text = message.text;
-  cell.nameLabel.text = message.senderId;
   return cell;
 }
 

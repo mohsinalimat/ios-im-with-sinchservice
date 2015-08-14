@@ -7,9 +7,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
-    
     id config = [[SinchService configWithApplicationKey:@"<YOUR_APP_KEY>"
                                       applicationSecret:@"<YOUR_APP_SECRET>"
                                         environmentHost:@"sandbox.sinch.com"]
@@ -20,6 +17,8 @@
     
     void (^onUserDidLogin)(NSString *) = ^(NSString *userId) {
         [sinch logInUserWithId:userId];
+        [sinch.push setDesiredPushTypeAutomatically];
+        [sinch.push registerUserNotificationSettings];
     };
     
     self.sinch = sinch;

@@ -16,13 +16,15 @@ Go ahead and create an app in your [Sinch Dashboard](https://www.sinch.com/dashb
 
 ![sinch-app](img/Sinch-app.png)
 
-There's a starter project that you can download from [Github](https://github.com/sinch/ios-im-with-sinchservice). Once you've downloaded that, take a quick look at the project just to get a feel for what we'll be working with. Don't worry if you don't understand all of it.
+There's a starter project that you can download from [Github](https://github.com/sinch/ios-im-with-sinchservice). Once you've downloaded that, take a quick look at the project just to get a feel for what we'll be working with.
 
-The starter project has a Podfile included. Install the Sinch pod by typing `pod install`. This will install the "SinchRTC" and "SinchService" pods. Now there should be an XCode workspace that you can use.
+The starter app has two view controllers. One is for the login, and the other is for instant messages. The instant message controller, MainViewController, has a UI that's customized in files like **MainViewController+UI.m**. We won't be touching those today, but they offer a nice foundation for what we want. The messages themselves will be in a [UITabelView](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/. Each message will be displayed as a cell object belonging to the class "MessageTableViewCell". This class is just a child of [UITableViewCell](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableViewCell_Class/index.html#//apple_ref/occ/cl/UITableViewCell). It has a [UITextView](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITextView_Class/) and [UILabel](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UILabel_Class/) for displaying a message and its sender respectively.
+
+The starter project has a Podfile included. Install the Sinch pod by navigating to the project directory in "Terminal" and typing `pod install`. This will install the "SinchRTC" and "SinchService" pods. Now there should be an XCode workspace that you can use.
 
 ## 2. Using SinchService
 
-Let's start at **AppDelegate.h**. Go ahead and add the following imports:
+Let's start in **AppDelegate.h**. Go ahead and add the following imports:
 
 ```objective-c
 #import <Sinch/Sinch.h>
@@ -134,9 +136,32 @@ SINOutgoingMessage *message = [SINOutgoingMessage messageWithRecipient:destinati
 [[self messageClient] sendMessage:message];
 ```
 
-Simple right? The message client delegate methods have already been added for you, denoted by a pragma mark. If you implement Sinch IM in a project of your own, it's a good idea to make changes to the UI here, as you'll know right when a message is sent or received.
+Now let's work with some of the delegate methods for the message client. Under the pragma mark labeled `#pragma mark - SINMessageClientDelegate`, you'll find the method `messageClient:didReceiveIncomingMessage:`. Add the following lines:
 
-I should also mention that working with incoming messages is pretty simple too. SINMessage objects have a text property, so you can get a message's text string straight from that.
+```objective-c
+[_messages addObject:@[ message, @(Incoming) ]];
+[self.messageView reloadData];
+[self scrollToBottom];
+```
+
+Here, we add the message to our message view's array, label it as "Incoming", reload the view data, and scroll to the bottom. We can do the same thing for sent messages too. just under `messageClient:didReceiveIncomingMessage:`, you'll find the method 'messageSent:recieptId:'. Add these lines:
+
+```objective-c
+[_messages addObject:@[ message, @(Outgoing) ]];
+[self.messageView reloadData];
+[self scrollToBottom];
+```
+
+If you implement Sinch IM in your own project, it's a good idea to make changes to the UI in these two methods, as you'll know right when a message is sent or received. 
+
+Now we can set the message text and sender for the UI. Find the method `tableView:cellForRowAtIndexPath:`. Here, you'll notice that we first get the SINMessage object for a particular row in the UITableView. After that, we dequeue a cell from the message view and store it in a MessageTableVieCell called "cell". Let's go ahead and add the message text and sender Id to the cell. Add the following lines before the return-statement:
+
+```objective-c
+cell.message.text = message.text;
+cell.nameLabel.text = message.senderId;
+```
+
+As you can see, working with Sinch messages is pretty straightforward. SINMessage objects have properties for a message's text and sender, so you can get NSStrings straight from those.
 
 Go ahead and test it out. You should be able to send and receive messages after logging in.
 
@@ -150,11 +175,11 @@ Once you've created and downloaded the appropriate push certificate on [Apple's 
 
 ![push-app](img/Push-app.png)
 
-Now, let's go back to **AppDelegate.m** and add some code. Find the method `application:didFinishLaunchingWithOptions:` and add these two lines to the top:
+Now, let's go back to **AppDelegate.m** and add some code. Find the method `application:didFinishLaunchingWithOptions:` and add these two lines to the block "onUserDidLogin":
 
 ```objective-c
-[[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
+[sinch.push setDesiredPushTypeAutomatically];
+[sinch.push registerUserNotificationSettings];
 ```
 
 Now the app will request the user's permission to use push notifications.
@@ -168,7 +193,7 @@ id config = [[SinchService configWithApplicationKey:@"<YOUR_APP_KEY>"
              pushNotificationsWithEnvironment:SINAPSEnvironmentAutomatic];
 ```
 
-Finally, add the following methods to the file in order to handle push notifications:
+Then, add the following methods to the file in order to handle push notifications:
 
 ```objective-c
 #pragma mark - push
@@ -189,7 +214,32 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 Test it out and see if push notifications are working. Note that push notification will only work on devices. If you're using a simulator, try sending a push message from your simulator to your device.
 
-![push-lock](img/Push-lock.png)
+![push-lock-1](img/Push-lock-1.png)
+
+Now that you know push works, let's fix that notification message. You don't want the user to see "SIN_INCOMING_IM" every time right?
+
+Go to **LoginViewController.m**. In `onLoginButtonPressed:`, add the following two lines before the segue `[self performSegueWithIdentifier:@"mainView" sender:nil];`:
+
+```objective-c
+id<SINManagedPush> push = [[(AppDelegate *)[[UIApplication sharedApplication] delegate] sinch] push];
+[push setDisplayName:self.nameTextField.text];
+```
+
+`setDisplayName:` is a neat method for setting the user's name. This adds a localized argument when sending a push notification, and makes it easier to work with push.
+
+If you try push again, you won't get a great result. In fact, now it should say "SIN_INCOMING_IM_DISPLAY_NAME". We're getting there though. To change what the localization key for our push notifications say, we need to first add a ".strings" file to our project. You can do that by going to File>New>File... and choosing a string file under the "Resources" category. Make sure to name it "Localizable".
+
+![add-file](img/Add-file.png)
+
+Once that file is in you project, simple open it add the following line:
+
+```
+"SIN_INCOMING_IM_DISPLAY_NAME" = "Incoming message from %@";
+```
+
+Give it a spin. You should get a pretty sweet looking push notification!
+
+![push-lock-2](img/Push-lock-2.png)
 
 There you have it! You've implemented Sinch Instant Messaging with push. For your convenience, I've also put a final version of this project up on [Github](https://github.com/sinch/ios-im-with-sinchservice).
 

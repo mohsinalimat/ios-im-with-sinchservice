@@ -10,6 +10,7 @@
 		00BDFE4ED6A606BA0723A209 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EB08477F2C237F522DC72D9 /* Security.framework */; };
 		04E7225544DC92DDD4F26EB3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2FA62677EE323C8950FEAE /* SystemConfiguration.framework */; };
 		277BFC10438321BAEF1D75C6 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 391A4F39D7DCDF4782D14C6A /* MessageTableViewCell.m */; };
+		2907E6991B7E6158004C0244 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2907E6981B7E6158004C0244 /* Localizable.strings */; };
 		30E29D910AEFBE8DD0D54049 /* IncomingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A694752EE9440C3CE606AEBF /* IncomingMessageCell.xib */; };
 		31F7F0B16D01053C4FE3355A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8F6D2DDF580668B2E3F2A56 /* AudioToolbox.framework */; };
 		3AD6E293A9DB674F7E5DE278 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB652BB29CDA1FAF566D2BA /* LoginViewController.m */; };
@@ -35,6 +36,7 @@
 		1AE98D66E38EDD98464606FB /* OutgoingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = OutgoingMessageCell.xib; path = SinchIM/OutgoingMessageCell.xib; sourceTree = "<group>"; };
 		1DCF35B0460DFA464A1E6E11 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = SinchIM/AppDelegate.m; sourceTree = "<group>"; };
 		1F0BD517835D7670ED8BFBA2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		2907E6981B7E6158004C0244 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = SinchIM/Localizable.strings; sourceTree = "<group>"; };
 		2AB241962CADD72C30C68B42 /* Sinch.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Sinch.xcassets; path = SinchIM/Sinch.xcassets; sourceTree = "<group>"; };
 		2E7ACECC15BC004D0F267B4C /* MessageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MessageTableViewCell.h; path = SinchIM/MessageTableViewCell.h; sourceTree = "<group>"; };
 		3284273D64FEA207C31E5ABA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -125,6 +127,7 @@
 				4440C517F44B412F31AED88E /* MainViewController.m */,
 				2E7ACECC15BC004D0F267B4C /* MessageTableViewCell.h */,
 				391A4F39D7DCDF4782D14C6A /* MessageTableViewCell.m */,
+				2907E6981B7E6158004C0244 /* Localizable.strings */,
 				1E8D4545907B10C1E6CA51EB /* Supporting Files */,
 			);
 			name = SinchIM;
@@ -209,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF267D06B571B1B2213D4DFF /* Images.xcassets in Resources */,
+				2907E6991B7E6158004C0244 /* Localizable.strings in Resources */,
 				30E29D910AEFBE8DD0D54049 /* IncomingMessageCell.xib in Resources */,
 				A3AD564A068406487DD22ADF /* MainStoryBoard.storyboard in Resources */,
 				6518BAC71F3781964A9E6EB7 /* OutgoingMessageCell.xib in Resources */,

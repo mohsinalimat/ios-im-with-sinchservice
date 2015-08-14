@@ -18,6 +18,9 @@
                                                         object:nil
                                                       userInfo:@{@"userId" : self.nameTextField.text}];
 
+    id<SINManagedPush> push = [[(AppDelegate *)[[UIApplication sharedApplication] delegate] sinch] push];
+    [push setDisplayName:self.nameTextField.text];
+    
     [self performSegueWithIdentifier:@"mainView" sender:nil];
 }
 
