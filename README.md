@@ -144,7 +144,7 @@ Now let's work with some of the delegate methods for the message client. Under t
 [self scrollToBottom];
 ```
 
-Here, we add the message to our message view's array, label it as "Incoming", reload the view data, and scroll to the bottom. We can do the same thing for sent messages too. just under `messageClient:didReceiveIncomingMessage:`, you'll find the method 'messageSent:recieptId:'. Add these lines:
+Here, we add the message to our message view's array, label it as "Incoming", reload the view data, and scroll to the bottom. We can do the same thing for sent messages too. just under `messageClient:didReceiveIncomingMessage:`, you'll find the method `messageSent:recieptId:`. Add these lines:
 
 ```objective-c
 [_messages addObject:@[ message, @(Outgoing) ]];
