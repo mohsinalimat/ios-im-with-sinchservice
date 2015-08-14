@@ -227,7 +227,7 @@ id<SINManagedPush> push = [[(AppDelegate *)[[UIApplication sharedApplication] de
 
 `setDisplayName:` is a neat method for setting the user's name. This adds a localized argument when sending a push notification, and makes it easier to work with push.
 
-If you try push again, you won't get a great result. In fact, now it should say "SIN_INCOMING_IM_DISPLAY_NAME". We're getting there though. To change what the localization key for our push notifications say, we need to first add a ".strings" file to our project. You can do that by going to File>New>File... and choosing a string file under the "Resources" category. Make sure to name it "Localizable".
+If you try push again, you won't get a great result. In fact, now it should say "SIN_INCOMING_IM_DISPLAY_NAME". We're getting there though. To change what the localization key for our push notifications says, we need to first add a ".strings" file to our project. You can do that by going to File>New>File... and choosing a strings file under the "Resources" category. Make sure to name it "Localizable".
 
 ![add-file](img/Add-file.png)
 
