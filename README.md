@@ -231,7 +231,7 @@ If you try push again, you won't get a great result. In fact, now it should say 
 
 ![add-file](img/Add-file.png)
 
-Once that file is in you project, simple open it add the following line:
+Once that file is in you project, simply open it add the following line:
 
 ```
 "SIN_INCOMING_IM_DISPLAY_NAME" = "Incoming message from %@";
